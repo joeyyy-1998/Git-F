@@ -7,3 +7,5 @@
 
 拉取最新：git pull 
 推送最新：git push  
+
+查看日志：git log
