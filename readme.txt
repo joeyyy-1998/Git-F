@@ -1,6 +1,7 @@
 2023-11-26
 今日学习内容：git简单命令。
-克隆仓库 git clone
+克隆仓库：git clone
+已经在仓库中（且有权限）之后：
 添加：git add 
 提交：git commit -m 'xxxx'
 查看状态：git status 
