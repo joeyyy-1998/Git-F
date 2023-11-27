@@ -10,3 +10,11 @@
 推送最新：git push  
 
 查看日志：git log
+
+2023-11-27
+
+今日学习内容：git简单命令复习
+
+使用cmd在终端更新ssh-keygen，克隆仓库：git clone
+
+未学习内容：api请求
