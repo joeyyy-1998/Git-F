@@ -3,7 +3,7 @@
 克隆仓库：git clone
 已经在仓库中（且有权限）之后：
 添加：git add 
-提交：git commit -m 'xxxx'
+提交：git commit -m xxxx
 查看状态：git status 
 
 拉取最新：git pull 
@@ -119,7 +119,7 @@
 
 (2)<dfn>指的是定义一个定义项目。
 
-**2023-11-29**
+## **2023-11-29**
 
  **HTML链接**
 
@@ -137,7 +137,7 @@
   <img src="example.jpg" alt="示例图片">
 </a>
 
- **锚点链接：**除了链接到其他网页外，您还可以在同一页面内创建内部链接，这称为锚点链接。要创建锚点链接，需要在目标位置使用 <a> 元素定义一个标记，并使用#符号引用该标记。 
+ **锚点链接：**除了链接到其他网页外，您还可以在[同一页面内创建内部链接]()，这称为锚点链接。要创建锚点链接，需要在目标位置使用 <a> 元素定义一个标记，并使用#符号引用该标记。 
 
 示例：
 
@@ -145,7 +145,7 @@
 <!-- 在页面中的某个位置 -->
 <a name="section2"></a>
 
- **下载链接：**如果您希望链接用于下载文件而不是导航到另一个网页，可以使用 download 属性。  
+ **下载链接：**如果希望链接用于下载文件而不是导航到另一个网页，可以使用 download 属性。  
 
 示例：
 
@@ -208,13 +208,162 @@ p {color:blue;}
 
 <link rel="stylesheet" href="标签路径">
 
-- [x]  本质的差别：**link** 属于 XHTML 标签，而 @import 完全是 CSS 提供的一种方式。 
+- [x] 本质的差别：**link** 属于 XHTML 标签，而 @import 完全是 CSS 提供的一种方式。 
+
+  #### **HTML列表**
+
+  
+
+  ul是unordered lists的缩写 (无序列表)
+
+  li是list item的缩写 （列表项目）
+
+  ol是ordered lists的缩写（有序列表）
+
+  dl是definition lists的英文缩写 (自定义列表)
+
+  dt是definition term的缩写 (自定义列表组)
+
+  dd是definition description的缩写（自定义列表描述）
+
+  nl是navigation lists的英文缩写 （导航列表）
+
+  tr是table row的缩写 （表格中的一行）
+
+  th是table header cell的缩写 （表格中的表头）
+
+  td是table data cell的缩写 （表格中的一个单元格）
+
+  ## **2023-11-30**
+
+  #### **HTML区块**
+
+   通过 <div> 和 <span>将元素组合起来 。
+
+ <div> 元素是块级元素，它可用于组合其他 HTML 元素的容器  
+
+ <span> 元素是内联元素，可用作文本的容器 
+
+ **块级元素 与 行内元素 的区别**
+
+ div   默认样式为块级显示 ， 可以容纳其他块级元素和行内元素 ，
+
+ <!--用于创建页面结构和布局--> 
+
+span  默认样式为行内显示 ， 用来包裹文本或其他行内元素 ，比如用来设置特定的文本样式，
+
+ <!--用于对文本或行内元素进行样式化或包裹--> 
+
+####    HTML表单
+
+ （1）收集用户的输入信息 。
+
+ （2） 表示文档中的一个区域，这个区域包含交互控件，将用户收集到的信息发送到 Web 服务器。
+
+ （3） 通常包含各种输入字段、复选框、单选按钮、下拉列表等元素 。
+
+使用 form来创建表单
+
+可以在表单找那个输入以下内容：
+
+------
 
 
 
+1. 文本域（textarea） , 下拉列表（select）、单选框（radio-buttons）、复选框（checkbox） 等等。 
+
+表单的输入元素
+
+（1） 输入标签 <input> 
+
+（2） 输入类型是由 **type** 属性定义 
+
+​       **常用的输入类型** 
+
+- [x] ​        ***文本域***:    <input type="text"> 
+
+- [x] ​        ***密码字段***: <input type="password"> 
+
+- [x] ​        ***单选按钮***： <input type="radio"> 可以设置以下几个属性： 
+
+name: 为控件命名，以备后台程序 ASP、PHP 使用 
+
+value: 提交数据到服务器的值
+
+checked : 当设置 [checked="checked"]() 时，该选项被默认选中 
+
+示例：
+
+<form>
+<p>你生活在哪个国家？</p>
+<input type="radio" name="country" value="China" checked="checked">中国<br />
+<input type="radio" name="country" value="the USA">美国
+</form>
+
+**注意**： 同一组的单选按钮，name 取值一定要一致 
+
+- [x] ​        ***复选框***： <input type="checkbox"> 
+
+- [x] ​        ***提交按钮***: <input type="submit"> 
+
+####  HTML脚本
+
+ JavaScript 使 HTML 页面具有更强的动态和交互性 
+
+ <script>  
+
+（1）标签用于定义客户端脚本，比如 JavaScript 
+
+ （2）元素既可包含脚本语句，也可通过 src 属性指向外部脚本文件 
+
+ （3）JS最常用于图片操作，表单验证，内容动态更新
+
+当浏览器不能使用脚本的时候，使用 <noscript> 标签
+
+#### HTML字符实体
+
+**lt** : less than     表示  < 
+
+**gt** : greater than    表示   \> 
+
+**amp** : ampersand     表示   & 
+
+**quot** : quotation      表示  " 
+
+详见下图：
+
+![image-20231130153231217](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20231130153231217.png)
 
 
- 
+
+### 文本格式化（Formatting）
+
+<b>粗体文本</b>
+<code>计算机代码</code>
+<em>强调文本</em>
+<i>斜体文本</i>
+<kbd>键盘输入</kbd> 
+
+<pre>预格式化文本</pre>
+<small>更小的文本</small>
+<strong>重要的文本</strong>
+
+<abbr> （缩写）
+
+<address> （联系信息）
+<bdo> （文字方向）
+<blockquote> （从另一个源引用的部分）
+<cite> （工作的名称）
+<del> （删除的文本）
+<ins> （插入的文本）
+<sub> （下标文本）
+<sup> （上标文本）
+
+### 链接（Links）
+
+ ![image-20231130201947170](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20231130201947170.png)
 
 
+
+## **2023-12-1**
 
