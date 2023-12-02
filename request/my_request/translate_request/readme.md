@@ -32,7 +32,5 @@ POST*有可能*产生两个数据包，GET只会发送一个数据包
 
 4.html中的POST /GET 请求的区别
 
- 注意 GET 请求不应该有 body，但POST存在body
-
-![image-20231201202947181](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20231201202947181.png)
+ 注意 **GET 请求不应该有 body**，但POST存在body
 

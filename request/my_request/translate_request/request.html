@@ -6,6 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
+	<link href="style.css"  rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Request Example</title>
     <script>
@@ -29,9 +30,15 @@
                 .then(response => response.json())
                 .then(data => {
                     // 处理返回的数据
-                    console.log(data);
-                    const htp = 'Post'
-                    QueryWeater(htp, data)
+                    console.log('------注释Post！！！-----')
+                    console.log(data); // 在控制台打印返回的数据
+                    if(data.code==200)
+                    {
+                        document.getElementById('weather').style.display = 'block'
+                        const htp = 'Post'
+                        QueryWeater(htp, data)
+                    }
+                   
                 })
                 .catch(error => {
                     // 处理请求错误
@@ -67,10 +74,15 @@
                     return response.json(); // 或者 response.text()，如果返回的是非 JSON 数据
                 })
                 .then(data => {
+                    console.log('------注释Get！！！-----')
                     console.log(data); // 在控制台打印返回的数据
                     // 这里可以添加一些处理返回数据的逻辑
-                    const htp = 'Get'
-                    QueryWeater(htp, data)
+                    if (data.code == 200) {
+                        document.getElementById('weather').style.display = 'block'
+                        const htp = 'Get'
+                        QueryWeater(htp, data)
+                    }
+
 
                     // document.getElementById('weather').textContent = JSON.stringify(data.result.highest);
                 })
@@ -88,7 +100,7 @@
                 console.log('Post')
                 var code = data.result.list[0]
             }
-            document.getElementById('weather').style.display = 'block'
+
 
             document.getElementById('weather').textContent =
                 '城市：' + data.result.area
@@ -106,19 +118,21 @@
 <body>
     <style>
         #weather {
+            /* 若为id唯一，则使用#weather， 若是cLass，则使用.weather */
             width: 400px;
             height: 200px;
-            background-color: red;
+            background-color: #f49f17;
             border-radius: 20px;
             padding: 20px;
         }
+
     </style>
     <!-- 输入框 -->
-    <input type="text" id="inputText" placeholder="输入你要查询的城市">
+    <input type="text" id="inputText"  class='input-text' placeholder="输入你要查询的城市">
 
     <!-- 按钮 -->
-    <button onclick="sendRequestGET('get')">使用GET协议查询天气</button>
-    <button onclick="sendRequestPOST('post')">使用POST协议查询天气</button>
+    <button class="button-rounded" onclick="sendRequestGET('get')">使用GET协议查询天气</button>
+    <button class="button-bordered" onclick="sendRequestPOST('post')">使用POST协议查询天气</button>
 
     <div id="weather" style="display: none; white-space: pre-wrap;">
         <p>

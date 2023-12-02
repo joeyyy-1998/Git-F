@@ -42,13 +42,13 @@ def QueryPackageDetail(choice, number):
     # print('状态：',x.get('result').get('status'))
     # print('更新时间：',x.get('result').get('updatetime'))
     # print('快递名：',x.get('result').get('kuaidiname'))
-    # print('团购名：',x.get('result').get('enkuaidiname'))
+    # print('英文名：',x.get('result').get('enkuaidiname'))
     # print('电话：',x.get('result').get('telephone'))
     print('--------------查询结果：---------------')
 
 
-    print('请选择你想要使用的协议：1.GET 2.POST')
-    choice = input('你的协议选择：')
-    number = input('请输入需要查询的快递单号：')          #快递单号
+print('请选择你想要使用的协议：1.GET 2.POST')
+choice = input('你的协议选择：')
+number = input('请输入需要查询的快递单号：')          #快递单号
      
-    QueryPackageDetail(choice,number)
+QueryPackageDetail(choice,number)
