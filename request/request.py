@@ -15,7 +15,7 @@ def GET(city):
 
 def POST(city):
     headers = {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded'        #post方式请求时，enctype应为application/x-www-form-urlencoded
     }
     result = requests.post('https://apis.tianapi.com/tianqi/index',
                            data={
