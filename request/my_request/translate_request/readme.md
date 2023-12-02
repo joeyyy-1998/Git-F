@@ -4,6 +4,16 @@ request模块：
 
 1.POST /GET 
 
+2.注意： urlWithParams包含的 
+
+请求示例：https://apis.tianapi.com/fanyi/index?key=你的APIKEY&text=hallo 
+
+**不可以缺少?key中的?**
+
+3.在控制台打印返回数据之后，使用if语句判断能否成功返回要查询的数据，从而决定是否显示block.
+
+![image-20231202202600456](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20231202202600456.png)
+
 POST请求相对安全，GET请求相对不安全
 
 GET请求可以缓存，POST请求不能缓存
@@ -26,11 +36,5 @@ POST*有可能*产生两个数据包，GET只会发送一个数据包
 
 ‘https://huaweicloud.csdn.net/6549f5a05543f15fea1a22fd.html?dp_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mjc5OTA4LCJleHAiOjE3MDIwMjQ3NjUsImlhdCI6MTcwMTQxOTk2NSwidXNlcm5hbWUiOiJzaGVuZHVfXzEyMyJ9.oAo1-zJBKE76RQJc3Am3KkLvngoeJUueGcE0Wa2tvj8’
 
- 3.小技巧： choice1,新建后手动选择语言,或在左侧新建时指定文件后缀 
-
- choice2: 先新建个空py文件，以后都从这个文件copy出来再打开 
-
-4.html中的POST /GET 请求的区别
-
- 注意 **GET 请求不应该有 body**，但POST存在body
+ 
 

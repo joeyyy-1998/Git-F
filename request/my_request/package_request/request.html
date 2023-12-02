@@ -11,7 +11,7 @@
     <script>
         function sendRequestPOST() {
             const apiUrl = 'https://apis.tianapi.com/kuaidi/index';
-            const apiKey = '2ca1c8dfd378ba935996ce837f62bf4c';
+            const apiKey = '0e2c14f1c9ab22c92478155dfdeccb21';
             var userInput = document.getElementById('inputText').value;
             if(!userInput){
                 alert('输入快递单号不得为空！')
@@ -33,9 +33,15 @@
                 .then(response => response.json())
                 .then(data => {
                     // 处理返回的数据
+                    console.log('----注释Post!!!----');
                     console.log(data);     //控制台加载返回数据
-                    const htp = 'Post'
-                    QueryWeater(htp, data)
+                    if(data.code==200)
+                    {
+                        document.getElementById('package').style.display = 'block'//只有满足成功返回数据的条件才显示block
+                        const htp = 'Post'
+                        Querypackage(htp, data)
+                    }
+                   
                 })
                 .catch(error => {
                     // 处理请求错误
@@ -52,7 +58,7 @@
             // 这里替换成你的 API 端点
             var apiEndpoint = 'https://apis.tianapi.com/kuaidi/index';
             // 将用户输入附加到 URL 上作为查询参数
-            var urlWithParams = apiEndpoint + '?key=2ca1c8dfd378ba935996ce837f62bf4c&number='
+            var urlWithParams = apiEndpoint + '?key=0e2c14f1c9ab22c92478155dfdeccb21&number='
                 + encodeURIComponent(userInput) ;
             // 使用 fetch 发起 GET 请求
             fetch(urlWithParams, {
@@ -71,11 +77,16 @@
                 })
                 .then(data => {
                     //处理返回的数据
+                    console.log('----注释Get!!!----');
                     console.log(data); // 在控制台打印返回的数据
                     // 这里可以添加一些处理返回数据的逻辑
-                    const htp = 'Get'
-                    Querypackage(htp, data)
+                    if (data.code == 200) {
+                        document.getElementById('package').style.display = 'block'
+                        const htp = 'Get'
+                        Querypackage(htp, data)
 
+                    }
+                    
                     // document.getElementById('weather').textContent = JSON.stringify(data.result.highest);
                 })
                 .catch(error => {
@@ -90,7 +101,7 @@
 
             } else {
                 console.log('Post')
-                var code = data.result.list[0]
+                var code = data.result   //
             }
             document.getElementById('package').style.display = 'block'
 
@@ -100,6 +111,7 @@
                 + '\n' + '快递名：' + code.kuaidiname
                 + '\n' + '英文名：' + code.enkuaidiname
                 + '\n' + '电话：' + code.telephone
+                + '\n' + '列表：' + code.list
 
         }
 
@@ -123,7 +135,7 @@
     <button onclick="sendRequestGET('get')">使用GET协议查询快递单号</button>
     <button onclick="sendRequestPOST('post')">使用POST协议查询快递单号</button>
 
-    <div id="weather" style="display: none; white-space: pre-wrap;">
+    <div id="package" style="display: none; white-space: pre-wrap;">
         <p>
 
         </p>
