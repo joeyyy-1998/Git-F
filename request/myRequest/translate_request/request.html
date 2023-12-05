@@ -1,0 +1,165 @@
+<!-- 使用js写https请求 -->
+<!-- js控制dom元素：https://blog.51cto.com/u_710020/5969571 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+	<link href="style.css"  rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Request Example</title>
+    <script>
+        function sendRequestPOST() {
+            const apiUrl = 'https://apis.tianapi.com/fanyi/index';
+            const apiKey = '2ca1c8dfd378ba935996ce837f62bf4c';
+            var userInput = document.getElementById('inputText').value;
+            if(!userInput){
+                alert('输入待翻译文本不得为空！')
+            }
+            // 构建请求参数
+            const formData = new FormData();
+            formData.append('key', apiKey);
+            formData.append('text', userInput)
+
+            // 发起POST请求
+            fetch(apiUrl, {
+                method: 'POST',
+                body: formData,            //这里是formData接收到key以及text，body接收到formData的数据key以及text
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // 处理返回的数据
+                    console.log('------注释Post！！！-----')
+                    console.log(data); // 在控制台打印返回的数据
+                    //这里是判断语句是否显示block，如果code==200则表示成功返回要查询的数据
+                    if(data.code==200)
+                    {
+                        document.getElementById('translate').style.display = 'block'
+                        const htp = 'Post'
+                        Translatetext(htp, data)
+                    }
+                   
+                })
+                .catch(error => {
+                    // 处理请求错误
+                    console.error('Error:', error);
+                });
+        }
+        function sendRequestGET() {
+            // 获取输入框的值
+            var userInput = document.getElementById('inputText').value;
+            if(!userInput){
+                alert('输入待翻译文本不得为空！')
+            }
+            // console.log(userInput)
+            // 这里替换成你的 API 端点
+            var apiEndpoint = 'https://apis.tianapi.com/fanyi/index';
+            // 将用户输入附加到 URL 上作为查询参数
+            var urlWithParams = apiEndpoint + '?key=2ca1c8dfd378ba935996ce837f62bf4c&text='   //?key这里的？至关重要！！！，text=这里的等号不能缺少！
+                + encodeURIComponent(userInput) ;
+            // 使用 fetch 发起 GET 请求
+            fetch(urlWithParams, {
+                method: 'GET', // 指定请求方法为 GET
+                headers: {
+                    // 如有需要，可以增加更多的请求头
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+                // 注意 GET 请求不应该有 body
+            })
+                .then(response => {
+                    if (!response.ok) 
+                    {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json(); // 或者 response.text()，如果返回的是非 JSON 数据
+                })
+                .then(data => {
+                    console.log('------注释Get！！！-----')
+                    console.log(data); // 在控制台打印返回的数据
+                    // 这里可以添加一些处理返回数据的逻辑
+                    //这里是判断语句是否显示block，如果code==200则表示成功返回要查询的数据
+                    if (data.code == 200) 
+                    {
+                        document.getElementById('translate').style.display = 'block'
+                        const htp = 'Get'
+                        Translatetext(htp, data)
+                    }
+
+
+                    // document.getElementById('weather').textContent = JSON.stringify(data.result.highest);
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+        }
+
+        function Translatetext(htp, data) {
+            if (htp == 'Get') 
+            {
+                console.log('Get')
+                var code = data.result
+
+            } 
+            else 
+            {
+                console.log('Post')
+                var code = data.result         //var code = data.result.list[0] 此处不同于天气的返回方式
+            }
+
+
+            document.getElementById('translate').textContent =
+                '原始语言：' + data.result.from 
+                + '\n' + '目标语言：' + code.to
+                + '\n' + '待翻译文本：' + code.src
+                + '\n' + '已翻译文本：' + code.dst
+
+                // + '\n' + '实时气温：' + code.real
+                // + '\n' + '最高气温：' + code.highest
+                // + '\n' + '最低气温：' + code.lowest
+                // + '\n' + '天气小助手：' + code.tips
+
+        }
+
+    </script>
+</head>
+
+<body>
+     
+    <style>
+        
+        #translate {
+            /* 若为id唯一，则使用#weather， 若是cLass，则使用.weather */
+            width: 400px;
+            height: 200px;
+            /* 修改 */
+            display: block;     
+            margin: auto;  
+            text-align: center; /* 确保文本在文本框内居中 */  
+             /* 修改 */
+            background-color: #ffe999;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+    </style>
+    <!-- 输入框 -->
+    <input type="text" id="inputText"  class='input-text' placeholder="输入你要翻译的文本">
+
+    <!-- 按钮 -->
+    <!-- <button class="button-rounded" onclick="sendRequestGET('get')">使用GET协议翻译文本</button>
+    <button class="button-bordered" onclick="sendRequestPOST('post')">使用POST协议翻译文本</button> -->
+    <button class="leaf-button" onclick="sendRequestGET('get')">使用GET协议翻译文本</button>
+    <button class="leaf-button" onclick="sendRequestPOST('post')">使用POST协议翻译文本</button>
+   
+    <div id="translate" style="display: none; white-space: pre-wrap;"></div>
+
+    <!-- <div id="text" style="margin:auto; width:50%; white-space: pre-wrap;"> -->
+        <p>
+
+        </p>
+    </div>
+
+</body>
+
+</html>
