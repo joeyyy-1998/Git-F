@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  <link rel="stylesheet" type="text/css" href="styles.css">  --> <!-- 外联外部样式表 --> 
+    <link rel="stylesheet" href="style.css"> 
+    <title>Simple calculator Example</title><!--  网页名称-->
+     
+</head>
+<body>
+
+<div class="container">
+    <div class="output" id="output">0</div>
+    <button class="button" onclick="clearOutput()" id="clear">C</button> 
+    <button class="button" onclick="appendToOutput('%')">%</button>
+    <button class="button" onclick="appendToOutput('/')">/</button>
+    <button class="button" onclick="appendToOutput('*')">*</button>
+    <button class="button" onclick="appendToOutput('7')">7</button>
+    <button class="button" onclick="appendToOutput('8')">8</button>
+    <button class="button" onclick="appendToOutput('9')">9</button>
+    <button class="button" onclick="appendToOutput('-')">-</button>
+    <button class="button" onclick="appendToOutput('4')">4</button>
+    <button class="button" onclick="appendToOutput('5')">5</button>
+    <button class="button" onclick="appendToOutput('6')">6</button>
+    <button class="button" onclick="appendToOutput('+')">+</button>
+    <button class="button" onclick="appendToOutput('1')">1</button>
+    <button class="button" onclick="appendToOutput('2')">2</button>
+    <button class="button" onclick="appendToOutput('3')">3</button>
+    <button class="button equals" onclick="calculate()">=</button>
+    <button class="button" onclick="appendToOutput('0')">0</button>
+    <button class="button" onclick="appendToOutput('.')">.</button>
+  </div>
+   <!-- 链接到外部JavaScript文件 -->   
+   <script src="calculator.js"></script>  
+</body>  
+  
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Copy Example</title>
+    <!-- 在HTML文件的<head>标签中通过<link>标签引入外部样式表。 -->
+    <link rel="stylesheet" type="text/css" href="styles.css">  <!-- 外联外部样式表 -->
+    <!-- 内联JavaScript   需要放置在head中 -->
+    <script>  
+        function myFunction() {     
+        var copyText = document.getElementById("myInput");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value);/* 将选中的文本（此时应该已经是整个元素中的文本）复制到剪贴板。*/
+    
+        var tooltip = document.getElementById("myTooltip");/* 获取ID为 "myTooltip" 的元素，并更新其 innerHTML 以显示已复制的文本。 */
+        tooltip.innerHTML = "复制内容: " + copyText.value;    /* 此处是点击以后出现的 */
+    }
+  
+       function outFunc() {
+       var tooltip = document.getElementById("myTooltip");/* 获取id为 "myTooltip" 的元素，并将其存储在变量 tooltip 中。 */
+       tooltip.innerHTML = "点击按钮复制"; /* 将这个元素的 innerHTML 属性设置为 "点击按钮复制"。 */
+       }  
+    </script>  
+</head>
+<body>  
+<p>
+单击按钮以复制输入框中的文本，然后尝试将文本（例如 ctrl+v）粘贴到不同的窗口中，以查看效果。
+</p>
+
+<input type="text" value="RUNOOB" id="myInput">
+<!-- 此部分为块级元素 -->
+<div class="tooltip">                <!-- class属性被设置为"tooltip"，为的是通过CSS样式来定义这个元素的表现方式。 -->
+<button onclick="myFunction()" onmouseout="soutFunc()">  <!-- 当用户点击这个按钮时，会执行"myFunction"函数。当鼠标从按钮上移出时，会执行"soutFunc"函数 -->
+  <span class="tooltiptext" id="myTooltip">复制</span>    <!-- 被用来作为按钮的文本 -->
+  复制内容提示
+</button>
+</div>
+<p>
+可以粘贴到下面：
+</p>
+<!-- 用于创建一个多行文本输入框。-->
+<textarea></textarea>
+</body>  
+</html>
+

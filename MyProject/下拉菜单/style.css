@@ -1,0 +1,99 @@
+/* 下拉菜单的样式表 */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #999;
+    overflow: hidden;
+    /* 注意: overflow:hidden 添加到 ul 元素,以防止 li 元素列表的外出(当li{float:left}时)。来源链接：https://www.runoob.com/try/try.php?filename=trycss_navbar_horizontal_float&basepath=0        */
+}
+
+li {
+    float: left;
+}
+
+li a {
+    color: white;
+    padding: 14px 16px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+li>a.active {
+    background-color: green;
+}
+
+li>a:hover:not(a.active),
+.dropbtn:hover {
+    background-color: #555;
+}
+
+.dropdown-content {
+    display: none;       /* 默认不放置鼠标之前是隐藏的 */
+    position: absolute;
+    /* 默认相对于<html>进行绝对定位 */
+    background-color: #f9f9f9;
+    min-width: 100px; /* 这是块元素所以min-width:100px会生效 */
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+}
+
+.dropdown-content a {
+    color: black;     /* 没有点击之前是黑色字体 */
+    display: block;
+    /* 因为<a>标签不是块元素，min-width:100px不会生效 */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: deepskyblue;  /* 鼠标放置在上面，出现的是蓝色字体 */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* 中间的空格表示，鼠标悬念在.dropdown上时，dropdown的子元素.dropdown-content变为块元素 */
+/* ### 待完善 ###   
+   因为.dropdown只用过一次，觉得可以删除<div class="dropdown"></div>来减少代码量，尝试  将.dropdown:hover .dropdown-content {display: block;}
+    修改为.dropbtn:hover+.dropdown-content {display: block;} 并删除<div class="dropdown"></div>后，鼠标悬停在“下拉菜单”上，会显示下拉菜单，
+    但无法选中菜单中的“链接 x”， ### 为什么？该如何完善？ ###  
+*/
+
+
+
+/*实现文字渐变 */
+.gradient1 span {
+    background: linear-gradient(to right, red, blue);
+    -webkit-background-clip: text;/* WebKit特定的CSS属性，它将背景裁剪到文本形状。在这里，它将背景（即上面的渐变色）应用到文本上 */
+    color: transparent;           /* 透明 */
+  }
+
+.gradient2 span {
+    background: linear-gradient(to right, red, yellow);
+    -webkit-background-clip: text;/* WebKit特定的CSS属性，它将背景裁剪到文本形状。在这里，它将背景（即上面的渐变色）应用到文本上 */
+    color: transparent;           /* 文本颜色设置为透明，使得背景渐变可见 */
+  }
+/* 这部分是h2 */
+  .text-gradient {  
+    display: inline-block;     /* 将元素设置为内联块级元素，这意味着它们可以在一行内显示，但仍然保留块级元素的属性 */
+    font-family: '微软雅黑';   /* 字体族为微软雅黑 */
+    font-size: 2em;          /* 字体大小为2em */
+    position: relative; /* 设置了元素的位置为相对定位，这是为了使.text-gradient[data-text]::after中的绝对定位有效 */
+  }
+
+  /* 选择所有带有 data-text 属性的 .text-gradient 元素，并在这些元素的内容之后插入内容（这个内容是由 ::after 伪元素的内容属性 content 定义的） */
+
+  .text-gradient[data-text]::after {  
+    content: attr(data-text);  /* 将内容设置为data-text属性的值--->渐变2-菜鸟工具 */
+    color: green;            /* 内容为 渐变2-菜鸟工具 */
+    position: absolute;  
+    left: 0;  /* 元素的最左边距为0 */
+    z-index: 2;/* 设置了元素的堆叠顺序为2，比其父元素（.text-gradient）的默认堆叠顺序要高。这意味着它会覆盖在.text-gradient元素之上 */
+    -webkit-mask-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#ff0000), to(rgba(0, 0, 255, 0)));
+    /* WebKit特定的CSS属性，它设置了一个遮罩图像。在这里，它设置了一个线性渐变遮罩，
+    从红色开始，到蓝色结束。这使得文本（绿色）在红色和蓝色之间显示为一个渐变。
+ */
+  }
+  /* 文本的颜色是一个从红色到蓝色的渐变，而文本本身的颜色是绿色的，
+  并且有一个从红色到蓝色的遮罩效果。这个效果可能看起来像是文本在一个渐变的背景上被切割出来一样。 */

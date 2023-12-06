@@ -79,8 +79,12 @@
 
  - 2023-12-05:
 
-   - [ ] 
+   - [x] html文件中应用js脚本: 内联JavaScript[<script> </script>  ]和外部JavaScript [<script src="script.js"></script>  ]
+   - [ ] 阅读编写copy
 
-  
+- 2023-12-06:
+
+  - [x] 实现渐变文字html效果
+  - [ ] 下拉菜单html
 
 
